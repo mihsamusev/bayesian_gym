@@ -7,7 +7,7 @@ __Time:__ Took 5 days, averaging 4 hours every day
 __Pros:__ Free. Really good theoretical background for Bayesian filtering and detailed mathematical derrivation of linear, extended, uncented and cubature Kalman filters together with particle filters. The course asks you do complete a few exercises after each lecture to deepen the new knowledge.
 __Cons:__ Most useful project-like exercises, for example MATLAB coding of filters is hidden behind approx 300 USD paycheck. 
 2) [filterpy](https://filterpy.readthedocs.io/en/latest/#id6) and [companion book](https://nbviewer.jupyter.org/github/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/table_of_contents.ipynb)
-__Time:__ Started monday 25.05 around 10
+__Time:__ Took around 10 days 6-8 hours a day
 __Pros:__
 __Cons:__
 
