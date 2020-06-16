@@ -36,6 +36,20 @@ class GaussianMixture:
             Pm += w * (P + np.dot(x - xm, x - xm)) 
         return xm, Pm
 
+    def get_n_best(self, n_max):
+        if self.count <= n_max:
+            return self.xs, self.Ps, self.ws
+        else:
+            idx = np.argsort(self.ws)
+            ws_out = np.array(self.ws)[idx[-n_max:]]
+            ws_out = ws_out / np.sum(ws_out)
+            xs_out = np.array(self.xs)[idx[-n_max:]]
+            Ps_out = np.array(self.Ps)[idx[-n_max:]]
+        return xs_out, Ps_out, ws_out
+
+    def get_mmse_estimate(self):
+        pass
+
 def approximate_nn(xs, Ps, ws):
     pass
 
@@ -126,10 +140,10 @@ def run_example():
         mixture = GaussianMixture(xs_u, Ps_u, ws_u)
         posteriors.append(mixture)
         # approximation
-        xp, Pp = mixture.get_merged()
+        xs_gsf, Ps_gsf, ws_gsf  = mixture.get_n_best(5)
         # prediction
-        xs_p, Ps_p = predict_mixture(xs_u, Ps_u, F, Q)
-        priors.append(GaussianMixture(xs_p, Ps_p, ws_u))
+        xs_p, Ps_p = predict_mixture(xs_gsf, Ps_gsf, F, Q)
+        priors.append(GaussianMixture(xs_p, Ps_p, ws_gsf))
 
 if __name__ == "__main__":
     run_example()
